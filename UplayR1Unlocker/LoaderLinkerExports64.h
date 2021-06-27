@@ -99,7 +99,7 @@
 #pragma comment(linker, "/export:UPLAY_SetGameSession=uplay_r164_loader_o.UPLAY_SetGameSession")
 #pragma comment(linker, "/export:UPLAY_SetLanguage=uplay_r164_loader_o.UPLAY_SetLanguage")
 #pragma comment(linker, "/export:UPLAY_Start=uplay_r164_loader_o.UPLAY_Start")
-#pragma comment(linker, "/export:UPLAY_Startup=uplay_r164_loader_o.UPLAY_Startup")
+// #pragma comment(linker, "/export:UPLAY_Startup=uplay_r164_loader_o.UPLAY_Startup")
 #pragma comment(linker, "/export:UPLAY_USER_ClearGameSession=uplay_r164_loader_o.UPLAY_USER_ClearGameSession")
 #pragma comment(linker, "/export:UPLAY_USER_ConsumeItem=uplay_r164_loader_o.UPLAY_USER_ConsumeItem")
 #pragma comment(linker, "/export:UPLAY_USER_GetAccountId=uplay_r164_loader_o.UPLAY_USER_GetAccountId")

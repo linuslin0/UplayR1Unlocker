@@ -66,3 +66,25 @@ EXPORT PCSTR UPLAY_INSTALLER_GetLanguageUtf8()
 		return config->lang.c_str();
 	}
 }
+
+#ifdef LOADER
+// only need this for loader (per game)
+EXPORT int UPLAY_Startup(int aUplayId, int aBuildId, const char * lang_utf8)
+{
+	GET_PROXY_FUNC(UPLAY_Startup);
+
+	auto use_uplay_id = aUplayId;
+	if (config->uplay_id != 0 && config->uplay_id != aUplayId) {
+		use_uplay_id = config->uplay_id;
+	}
+
+	auto result = proxyFunc(use_uplay_id, aBuildId, lang_utf8);
+	if (use_uplay_id == aUplayId) {
+		logger->info("UPLAY_Startup -> UplayID: {}, result: {}", use_uplay_id, result);
+	} else {
+		logger->info("UPLAY_Startup -> modified UplayID: {}, result: {}", use_uplay_id, result);
+	}
+	
+	return result;
+}
+#endif

@@ -23,12 +23,13 @@ Config::Config(HMODULE hModule)
 	{
 		auto j = json::parse(ifs, nullptr, true, true);
 
+		GET(j, uplay_id);
 		GET(j, log_level);
 		GET(j, lang);
 		GET(j, blacklist);
 	} catch(json::exception e)
 	{
-		MessageBoxA(NULL, e.what(), "Error parsing config file", MB_ICONERROR);
+		// MessageBoxA(NULL, e.what(), "Error parsing config file", MB_ICONERROR);
 		return;
 	}
 }
@@ -38,7 +39,7 @@ void Config::init(HMODULE hModule)
 	if(config != nullptr)
 		return;
 
-	config = new Config(hModule);
+	config = std::shared_ptr<Config>(new Config(hModule));
 }
 
-Config* config = nullptr;
+shared_ptr<Config> config = nullptr;
